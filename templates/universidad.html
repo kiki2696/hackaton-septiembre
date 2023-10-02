@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/static/styles_3.css">
+     <title>Universidades</title>
+     
+</head>
+<body >
+   
+    <main id="titulo_main">
+        <section id="titulo">
+
+                <h2>Universidades</h2>
+                <h3>Elige la universidad a la que desea ir:</h3>
+                {% for universidad in universidades %}
+                    <div>
+                        <a href="{{ url_for('parada', id=universidad.id) }}">   {{ universidad.universidad }}</a>
+                        <!-- <a href="">Universidad Católica [UCAP]</a> -->
+                    </div>
+                {% endfor %}
+
+        </section>
+        </main>
+</body>
+</html>

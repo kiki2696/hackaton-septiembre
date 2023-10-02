@@ -1,0 +1,51 @@
+body{
+margin: 0;
+padding: 0;
+background: url("/static/fondo_2.jpg") no-repeat center center fixed;
+background-size: cover;
+
+}
+section {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.798); /* Fondo del div con opacidad */
+    width: 40%; 
+    height: 70%;
+    padding: 20px; 
+    margin: 0 auto; 
+    text-align: center;
+    margin-left: 30%;
+    border-radius: .5rem;
+    margin-top: 8%;
+    gap: 6px;
+    box-shadow: 20px 5px 29px 0px rgba(0, 0, 0, 0.5);
+    
+
+}
+div{
+    justify-content: center;
+    
+}
+h2{
+    text-align: center;
+    font-size: 2rem;
+   
+}
+h3{
+    text-align: center;
+    margin-top: 2px;
+    font-size:1.5rem;
+    position: relative;
+ 
+}
+ul{
+    position: relative;
+    padding: 0 1rem;
+    list-style: none;
+    font-size: 1.5rem;
+
+}
+
+
+
+
+      

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/index.css">
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            
+        }
+        #map-canvas{
+            height: 80%;
+            width: 100%;
+            
+        }
+        #ul_nav li{
+           margin-left: 18em;
+        }
+    </style>
+    <!--URL de la API de Google Maps y el API Key.-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEQaBt02C9cp123Ju8etroE1amS5NEG9U"></script>
+</head>
+<body>
+    <header>
+        <div id="logofondo">
+          <img id="logo" src="/static/logo.png" alt="" />
+        </div>
+        <nav>
+          <ul id="ul_nav">
+            
+            <li><a href="/universidad">Universidades</a></li>
+            
+          </ul>
+        </nav>
+      </header>
+    <div id="map-canvas" style="width: 100%; height:100%;"></div>
+
+    <!--INICIO MAPA Y MARCADORES.-->
+    <script>
+function initMap() {
+    var map;
+    var bounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-25.499223197815652, -54.66563685889974)
+    );
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+                    
+    // Mostrar un mapa en la página web.
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    map.setTilt(50);
+        
+    // Multiples marcadores de localización (latitud, logitud).
+    var markers = [
+        ['Terminal de Transporte Urbano de CDE', -25.51016300718352, -54.616370046263754],
+        ['UCAP', -25.47578766164494, -54.623602458344315],
+        ['UNE', -25.483679686194645, -54.66987586667465],
+        ['Puerta del Sol', -25.37488096971618, -54.64421071076589],
+        ['Terminal de Hernandarias', -25.404974972919103, -54.62977175406794],
+        ['Colegio Nacional Soldado Paraguayo', -25.470389946221243, -54.64461269357669],
+        ['Estacion de Servicio Petrobras (Km7)', -25.498099900525744, -54.662776305901325],
+        ['Rotonda del Área 1', -25.515238958720555, -54.641675550339],
+        ['Estación de Servicio Petrobras (Cavalcanti)', -25.49852637917494, -54.634894602839026],
+        ['Petrosur Hernandarias', -25.40840283695461, -54.63043942704338]
+    ];
+                        
+    // Ventana de información de los marcadores.
+    var infoWindowContent = [
+        ['<div class="info_content">' +
+        '<h3>Terminal de Transporte Urbano de CDE</h3>' +
+        '<p>Parada obligatoria de todos los buses de la ciudad.</p>' + '</div>'],
+        ['<div class="info_content">' +
+        '<h3>UCAP</h3>' +
+        '<p>Universidad Católica "Nuestra Señora de la Asunción - Sede Alto Paraná".</p>' +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>UNE</h3>' +
+        '<p>Universidad Nacional del Este.</p>' +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Puerta del Sol</h3>' +
+        "<p>Sobre la Avda. Ka'a (Cerca del depósito de Blascor).</p>" +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Terminal de Omnibus de Hernandarias</h3>' +
+        "<p>Parada obligatoria de todos los buses de la ciudad.</p>" +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Colegio Nacional Soldado Paraguayo</h3>' +
+        "<p>Sobre la Avda. República del Perú (frente mismo al colegio).</p>" +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Estación de Servicio Petrobras Km7.</h3>' +
+        "<p>Entre Av. San Blás y Av. República del Perú.</p>" +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Rotonda del Área 1.</h3>' +
+        "<p>Pasan un poco la rotonda del Área 1 (sentido CDE - Hernandarias).</p>" +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Estación de Servicio Petrobras (Cavalcanti).</h3>' +
+        "<p>Estación de Servicio Petrobras frente a Divisa Automotores S.A.</p>" +
+        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Petrosur Hernandarias.</h3>' +
+        "<p>Estación de Servicio Petrosur (frente a la rotonda del Área 6).</p>" +
+        '</div>']
+    ];
+        
+    // Agregar los múltiples marcadores al mapa.
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Poner cada marcadores en el mapa.
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0]    
+        });
+
+         // Cambiar la imagen del marcador de UCAP.
+         if (markers[i][0] === 'UCAP') {
+            marker.setIcon("https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png");
+        }
+
+         // Cambiar la imagen del marcador de UNE.
+         if (markers[i][0] === 'UNE') {
+            marker.setIcon("https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png");
+        }
+        
+        // Agregar la ventana de información a los marcadores.   
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Centrar el mapa para que los marcadores entren dentro de la ventana.
+        map.fitBounds(bounds);
+    }
+
+    // Establecer el nivel de zoom.
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(14);
+        google.maps.event.removeListener(boundsListener);
+    });
+
+    // Trayectoria de los buses.
+    // Trayecto del bus de UCA.
+    var directionsService_UCA = new google.maps.DirectionsService();
+    var directionsRenderer_UCA = new google.maps.DirectionsRenderer({
+        map: map,
+        suppressMarkers: true, // Evita que los marcadores predeterminados de la ruta se muestren
+        polylineOptions: {
+            strokeColor: 'red', // Color de la línea de la trayectoria
+            strokeWeight: 3, // Grosor de la línea de la trayectoria
+        },
+    });
+
+    var start_UCA = new google.maps.LatLng(-25.515238958720555, -54.641675550339); // Rotonda del Área 1.
+    var end_UCA = new google.maps.LatLng(-25.37488096971618, -54.64421071076589); // Puerta del Sol.
+    var waypoint1_UCA = new google.maps.LatLng(-25.49852637917494, -54.634894602839026); // Estación de Servicio Petrobras (Cavalcanti).
+    var waypoint2_UCA = new google.maps.LatLng(-25.47578766164494, -54.623602458344315); // UCAP
+    var waypoint3_UCA = new google.maps.LatLng(-25.404974972919103, -54.62977175406794); // Terminal de Hernandarias.
+
+    var request_UCA = {
+        origin: start_UCA,
+        destination: end_UCA,
+        waypoints: [{ location: waypoint1_UCA, stopover: true }, { location: waypoint2_UCA, stopover: true}, { location: waypoint3_UCA, stopover: true}],
+        travelMode: google.maps.TravelMode.DRIVING,
+    };
+    directionsService_UCA.route(request_UCA, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsRenderer_UCA.setDirections(response);
+         }
+    });
+
+    // Trayecto del bus de UNE.
+    var directionsService_UNE = new google.maps.DirectionsService();
+    var directionsRenderer_UNE = new google.maps.DirectionsRenderer({
+        map: map,
+        suppressMarkers: true, // Evita que los marcadores predeterminados de la ruta se muestren
+        polylineOptions: {
+            strokeColor: 'green', // Color de la línea de la trayectoria
+            strokeWeight: 6, // Grosor de la línea de la trayectoria
+        },
+    });
+
+    var start_UNE = new google.maps.LatLng(-25.51016300718352, -54.616370046263754); //Terminal de Transporte Urbano de CDE.
+    var end_UNE = new google.maps.LatLng(-25.40840283695461, -54.63043942704338); // Petrosur Hernandarias (Rotonda Área 6).
+    var waypoint1_UNE = new google.maps.LatLng(-25.498099900525744, -54.662776305901325); // Estacion de Servicio Petrobras (Km7).
+    var waypoint2_UNE = new google.maps.LatLng(-25.483679686194645, -54.66987586667465); // UNE
+    var waypoint3_UNE = new google.maps.LatLng(-25.470389946221243, -54.64461269357669); // Colegio Nacional Soldado Paraguayo (Don Bosco).
+
+    var request_UNE = {
+        origin: start_UNE,
+        destination: end_UNE,
+        waypoints: [{ location: waypoint1_UNE, stopover: true }, { location: waypoint2_UNE, stopover: true}, { location: waypoint3_UNE, stopover: true}],
+        travelMode: google.maps.TravelMode.DRIVING,
+    };
+    directionsService_UNE.route(request_UNE, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsRenderer_UNE.setDirections(response);
+         }
+    });
+}
+
+// Cargar la función inicialize.
+google.maps.event.addDomListener(window, 'load', initMap);
+
+</script>
+<!--FIN MAPA Y MARCADORES-->
+
+</body>
+</html>

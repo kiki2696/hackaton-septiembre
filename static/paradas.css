@@ -1,0 +1,121 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+header{
+    background-image: linear-gradient(
+    to right, rgb(62, 218, 149), rgb(65, 223, 176),
+    rgb(82, 226, 198), rgb(107, 229, 217), rgb(135, 231, 230));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    
+}
+section{
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #334046da;
+    border-radius: 2rem;
+    
+}
+#parada1 a{
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: crimson;
+    width: 100%;
+    color: black;
+   
+}
+#parada1 a:hover{
+    color: rgb(136, 204, 231);
+    border-bottom: 2px solid;
+    padding-bottom: 0.3rem;color: rgb(136, 204, 231);
+    border-bottom: 2px solid;
+    padding-bottom: 0.3rem;
+}
+#parada3 a{
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: crimson;
+    width: 100%;
+    color: black;
+}
+#parada3 a:hover{
+    color: rgb(136, 204, 231);
+    border-bottom: 2px solid;
+    padding-bottom: 0.3rem;color: rgb(136, 204, 231);
+    border-bottom: 2px solid;
+    padding-bottom: 0.3rem;
+    border: 5%;
+}
+a{
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: crimson;
+    width:-0.12%;
+
+}
+.lista a{
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: crimson;
+    width:-0.12%;
+
+}
+
+#mapa1{
+    width: 10rem;
+    height: 10rem;
+    background-image: url(/static/1.jpeg);
+    background-size: cover;
+    margin-left: 10em;
+}
+#mapa2{
+    width: 10rem;
+    height: 10rem;
+    background-image: url(/static/2.jpeg);
+    background-size: cover;
+    margin-left: 19em;
+}
+#mapa3{
+    width: 10rem;
+    height: 10rem;
+    background-image: url(/static/3.jpeg);
+    background-size: cover;
+    margin-left: 16em;
+    
+}
+#mapa4{
+    width: 10rem;
+    height: 10rem;
+    background-image: url(/static/4.jpeg);
+    background-size: cover;
+    margin-left: 10em;
+}
+#parada11{
+    display: flex;
+    justify-content: center;
+    
+}
+
+#cde{
+    margin-top: 6em;
+}
+h4{
+    margin-left: 45%;
+}
+#parada12{
+    display: flex;
+    justify-content: center;
+    }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <h1>Paradas</h1>
+    <button><a href="/home">Homepage</a></button>
+
+    <H2 class="pt-4 pl-2 font-bold">HERNANDARIAS A {{universidad.universidad}}</H2>
+ 
+    
+
+     <H2 class="pt-4 pl-2 font-bold">CDE A {{universidad.universidad}}</H2>
+     {% for ruta2 in parada_uca_cde %}
+         <p class="pt-2 pl-2">{{ ruta2.parada }}</p>
+         <p class="pt-2 pl-2 pb-4">
+            <button><a href="{{ url_for('horario') }}">Ver horarios</a></button>
+        </p>
+     {% endfor %}
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+body{
+margin: 0;
+padding: 0;
+background: url("/static/fondo_2.jpg") no-repeat center center fixed;
+background-size: cover;
+
+}
+section {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.798); /* Fondo del div con opacidad */
+    width: 40%; 
+    height: 70%;
+    padding: 20px; 
+    margin: 0 auto; 
+    text-align: center;
+    margin-left: 30%;
+    border-radius: .5rem;
+    margin-top: 8%;
+    gap: 12px;
+    box-shadow: 20px 5px 29px 0px rgba(0, 0, 0, 0.5);
+    
+
+}
+h2{
+    text-align: center;
+    font-size: 2rem;
+   
+}
+
+h3{
+    text-align: center;
+    font-size:1.3rem;
+    position: relative;
+ 
+}
+div{
+    margin-top: 5rem; 
+    margin-left: 4rem; 
+    top: 2px;  
+    
+}
+a{
+  
+    display: block;
+    margin-top: 12em;
+    padding-top: 20px;
+    background-color: white;
+    border-radius: .5rem;
+    border:2px bold black;
+    width: 90%;
+    font-size: 1.3em;
+    height: 60px;
+    margin-top: 2rem;
+    text-align: center;
+    box-shadow: 0px 0px 10px #334046da;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    
+
+}
+
+
+
+
+
+      

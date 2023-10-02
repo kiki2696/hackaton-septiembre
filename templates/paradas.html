@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/paradas.css">
+    <title>Paradas</title>
+</head>
+<body>
+    <header>
+        <h1>Paradas de Transporte</h1>
+    </header>
+    <main>
+        <section>
+            <div id="parada">
+                <h4>Hernandarias a {{universidad.universidad}}</h4>
+                <div id="parada11">
+                    <div id="parada1">
+                        {% for ruta1 in parada_uca_her %}
+
+                            <a class="lista" href="{{ url_for('horario') }}">{{ ruta1.parada }}</a>
+            
+                        {% endfor %}
+                    </div>
+                    {% if universidad.universidad == 'UCA'%}
+                        <div id="mapa2"> </div>
+                    {% else %}
+                        <div id="mapa1"> </div>
+                    {% endif %}
+               
+                    </div>
+                </div>
+                <div id="parada2">
+                <h4 id="cde">Ciudad del Este a {{universidad.universidad}}</h4>
+
+               
+            
+                    <div id="parada12">
+                        <div id="parada3">
+                            {% for ruta2 in parada_uca_cde %}           
+                                <a class="lista" href="{{ url_for('horario') }}">{{ ruta2.parada }}</a>
+                        
+                            {% endfor %}
+                        </div>
+                    {% if universidad.universidad == 'UNE'%}
+                        <div id="mapa3"> </div>
+                    {% else %}
+                        <div id="mapa4"> </div>
+                    {% endif %}
+              
+            </div>
+        </div>
+
+               
+        </section>
+    </main>
+</body>
+</html>
